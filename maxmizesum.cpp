@@ -6,7 +6,7 @@ void swap(int *a, int *b)
 	int *temp;
 	temp = a;
 	a = b;
-	b = a;
+	b = temp;
 }
 
 void printar(int a[],int n)
