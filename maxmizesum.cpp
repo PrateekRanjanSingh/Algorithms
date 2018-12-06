@@ -28,6 +28,7 @@ void maxm(int a[], int b[],int n)
 		}
 	}
 }
+
 int summ(int a[],int b[],int n)
 {
 	int sum = 0;
