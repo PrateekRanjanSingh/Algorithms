@@ -29,27 +29,27 @@ int cal(vector <int> v, int k)
 }
 
 //Optimized Code
-int cal2(vector <int> v, int k)
-{
-	int i = 0, j = v.size()-1;
-	sort(v.begin(),v.end());
-	int count = 0;
-	while(i < n && j >0)
-	{
-		if(count > 0)
-		{
-			if(a[i]==a[i-1]) i++;
-			else if(a[j]==a[j+1]) j--;
-		}
-		if(a[i]+a[j]==k)
-		{
-			count++;
-			i++;
-			j--;
-		}
-	}
-	return count;
-}
+//int cal2(vector <int> v, int k)
+//{
+//	int i = 0, j = v.size()-1;
+//	sort(v.begin(),v.end());
+//	int count = 0;
+//	while(i < n && j >0)
+//	{
+//		if(count > 0)
+//		{
+//			if(a[i]==a[i-1]) i++;
+//			else if(a[j]==a[j+1]) j--;
+//		}
+//		if(a[i]+a[j]==k)
+//		{
+//			count++;
+//			i++;
+//			j--;
+//		}
+//	}
+//	return count;
+//}
 
 int main()
 {
