@@ -1,5 +1,3 @@
-/*Program for climbing the leaderboard*/
-
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -8,13 +6,14 @@ vector<string> split_string(string);
 // Complete the climbingLeaderboard function below.
 vector<int> climbingLeaderboard(vector<int> scores, vector<int> alice) {
     vector <int> aliceranks,v;
-    map <int,int> m;
     for(int i = 0;i<scores.size();i++)
     {
-        m[scores[i]]++;
+        if(i==0) v.push_back(scores[i]);
+        else
+        {
+            if(scores[i]!=scores[i-1]) v.push_back(scores[i]);
+        }
     }
-    for(auto [first,second]:m) v.push_back(first);
-    reverse(v.begin(),v.end());
     for(auto x:v) cout << x << " ";
     cout << endl;
     for(int j = 0;j<alice.size();j++)
@@ -24,6 +23,11 @@ vector<int> climbingLeaderboard(vector<int> scores, vector<int> alice) {
             if(alice[j]<v[i])
             {
                 aliceranks.push_back(i+2);
+                break;
+            }
+            else if(alice[j]==v[i])
+            {
+                aliceranks.push_back(i+1);
                 break;
             }
         }
@@ -115,4 +119,3 @@ vector<string> split_string(string input_string) {
 
     return splits;
 }
-
