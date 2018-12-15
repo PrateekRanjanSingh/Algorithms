@@ -29,27 +29,37 @@ int cal(vector <int> v, int k)
 }
 
 //Optimized Code
-//int cal2(vector <int> v, int k)
-//{
-//	int i = 0, j = v.size()-1;
-//	sort(v.begin(),v.end());
-//	int count = 0;
-//	while(i < n && j >0)
-//	{
-//		if(count > 0)
-//		{
-//			if(a[i]==a[i-1]) i++;
-//			else if(a[j]==a[j+1]) j--;
-//		}
-//		if(a[i]+a[j]==k)
-//		{
-//			count++;
-//			i++;
-//			j--;
-//		}
-//	}
-//	return count;
-//}
+int count2 (vector <int> v,int k)
+{
+	int arr[k+1] = {0};
+	for(int i = 0;i<v.size();i++)
+	{
+		arr[v[i]]++;
+	}
+	int count = 0;
+	if(k%2!=0)
+	{
+		for(int i = 0;i<=k;i++)
+		{
+			if(arr[i]>0 && arr[k-i] > 0)
+			count++;
+		}
+	}
+	else
+	{
+		for(int i = 0;i<=k;i++)
+		{
+			if(i==k/2)
+			{
+				if(arr[i]>1) count++;
+				break;
+			}
+			else if(arr[i]>0 && arr[k-i] > 0)
+			count++;
+		}
+	}
+	return count;
+}
 
 int main()
 {
@@ -64,6 +74,7 @@ int main()
 	}
 	int k;
 	cin >> k;
-	cout << cal(v,k);
+	cout << cal(v,k) << endl;
+	cout << count2(v,k);
 	return 0;
 }
