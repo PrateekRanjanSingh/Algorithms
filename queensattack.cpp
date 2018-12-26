@@ -23,35 +23,51 @@ int queensAttack(int n, int k, int r_q, int c_q, vector<vector<int>> obstacles)
     }
     int r = r_q-1;
     int c = c_q-1;
-    arr[r][c] = 2;
+    arr[r][c] = 1;
     int count = 0;
     //For rows
-    for(int i = 0;i<n;i++)
+    for(int i = c+1;i<n;i++)
     {
-        if(arr[r][i]==0) count++;
+        if(arr[r][i]==1) break;
+        else if(arr[r][i]==0) count++;
+    }
+    for(int i = c-1;i>=0;i--)
+    {
+        if(arr[r][i]==1) break;
+        else if(arr[r][i]==0) count++;
     }
     //For columns
-    for(int i = 0;i<n;i++)
+    for(int i = r+1;i<n;i++)
     {
-        if(arr[i][c]==0) count++;
+        if(arr[i][c]==1) break;
+        else if(arr[i][c]==0) count++;
+    }
+    for(int i = r-1;i>=0;i--)
+    {
+        if(arr[i][c]==1) break;
+        else if(arr[i][c]==0) count++;
     }
     //For positive slope diagonal
-    for(int i = r,j=c;i<n && j<n;i++,j++)
+    for(int i = r+1,j=c+1;i<n && j<n;i++,j++)
     {
-        if(arr[i][j]==0) count++;
+        if(arr[i][j]==1) break;
+        else if(arr[i][j]==0) count++;
     }
-    for(int i = r,j=c;i>=0 && j>=0;i--,j--)
+    for(int i = r-1,j=c-1;i>=0 && j>=0;i--,j--)
     {
-        if(arr[i][j]==0) count++;
+        if(arr[i][j]==1) break;
+        else if(arr[i][j]==0) count++;
     }
     //For negative slope diagonal
-    for(int i = r,j=c;i<n && j>=0;i++,j--)
+    for(int i = r+1,j=c-1;i<n && j>=0;i++,j--)
     {
-        if(arr[i][j]==0) count++;
+        if(arr[i][j]==1) break;
+        else if(arr[i][j]==0) count++;
     }
-    for(int i = r,j=c;i>=0 && j<n;i--,j++)
+    for(int i = r-1,j=c+1;i>=0 && j<n;i--,j++)
     {
-        if(arr[i][j]==0) count++;
+        if(arr[i][j]==1) break;
+        else if(arr[i][j]==0) count++;
     }
     for(int i = 0;i<n;i++)
         {
