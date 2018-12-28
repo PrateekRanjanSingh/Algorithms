@@ -20,7 +20,7 @@ int howManyGames(int p, int d, int m, int s) {
         s -= p;
         c++;
     }
-    if(s >= m)
+    if(s >= m && p-d < m)
     {
         while(s-m >= 0)
         {
