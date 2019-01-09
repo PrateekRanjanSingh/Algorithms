@@ -9,7 +9,7 @@ int flatlandSpaceStations(int n, vector<int> c)
 {
     if(c.size()==1)
     {
-        return max(n-c[0],c[0]-1);
+        return max(n-1-c[0],c[0]);
     }
     sort(c.begin(),c.end());
     int m = 0,d;
