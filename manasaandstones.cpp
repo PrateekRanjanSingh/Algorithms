@@ -2,48 +2,26 @@
 
 using namespace std;
 
-// Complete the stones function below.
-vector<int> stones(int n, int a, int b) 
-{
-    set <int> s;
-    
-}
-
 int main()
 {
-    ofstream fout(getenv("OUTPUT_PATH"));
-
-    int T;
-    cin >> T;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-    for (int T_itr = 0; T_itr < T; T_itr++) {
-        int n;
-        cin >> n;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-        int a;
-        cin >> a;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-        int b;
-        cin >> b;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-        vector<int> result = stones(n, a, b);
-
-        for (int i = 0; i < result.size(); i++) {
-            fout << result[i];
-
-            if (i != result.size() - 1) {
-                fout << " ";
-            }
+    int t,n,a,b;
+    cin >> t;
+    while(t--)
+    {
+        cin >> n >> a >> b;
+        n--;
+        int d = abs(a-b);
+        int m = min(a,b);
+        int ma = max(a,b);
+        if(a==b) cout << m*n;
+        else
+        for(int i = m*n;i<=ma*n;i+=d)
+        {
+            cout << i << " ";
         }
-
-        fout << "\n";
+        cout << endl;
     }
-
-    fout.close();
 
     return 0;
 }
+
