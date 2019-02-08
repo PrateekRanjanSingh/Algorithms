@@ -1,3 +1,7 @@
+/**
+Code to print letter combinations of a phone number
+**/
+
 #include <bits/stdc++.h>
 using namespace std;
 
