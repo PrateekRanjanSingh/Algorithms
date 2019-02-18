@@ -9,24 +9,20 @@ struct val {
 
 bool compare(struct val a, struct val b)
 {
-    return a.first<b.first;
+    return a.second<b.second;
 }
 
 void func(struct val p[],int n)
 {
     sort(p,p+n,compare);
-    int lis[n];
-    for(int i = 0;i<n;i++) lis[i] = 1;
-    
+    int j = 0;
+    cout << p[j].index+1 << " ";
     for(int i = 1;i<n;i++)
     {
-        for(int j = 0;j<i;j++)
+        if(p[i].first>p[j].second)
         {
-            if(p[i].first>p[j].second  && lis[i]<lis[j]+1)
-            {
-                lis[i] = lis[j]+1;
-                cout << p[j].index << " ";
-            }
+            cout << p[i].index+1 << " ";
+            j = i;
         }
     }
 }
@@ -43,7 +39,7 @@ int main() {
 	    for(int i = 0;i<n;i++)
 	    {
 	        cin >> p[i].first;
-	        p[i].index = i+1;
+	        p[i].index = i;
 	    }
 	     for(int i = 0;i<n;i++)
 	    {
