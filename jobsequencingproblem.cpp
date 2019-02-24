@@ -9,7 +9,7 @@ struct val{
 
 bool compare(struct val a, struct val b)
 {
-    return a.dline<b.dline;
+    return a.dline>b.dline;
 }
 
 int func(struct val p[], int n)
