@@ -7,41 +7,49 @@ struct val{
     int profit;
 };
 
-bool compare(struct val a, struct val b)
+bool compare(struct val a,struct val b)
 {
-    return a.dline>b.dline;
+    return(a.dline>b.dline);
 }
 
-int func(struct val p[], int n)
+void func(struct val p[],int n)
 {
     sort(p,p+n,compare);
-    map <int,int> m;
-    for(int i = 0;i<n;i++)
+    int size = p[0].dline;
+    int ar[size];
+    int k = size;
+    int j = 0;
+    map <int,bool> m;
+    int tar[n+1] = {0};
+    while(k>=0)
     {
-        m[p[i].dline]++;
-    }
-    map <int,int> :: iterator it;
-    int index = 0;
-    int dl = 0;
-    int sum = 0;
-    int count = 0;;
-    for(it = m.begin();it!=m.end();it++)
-    {
-        if(dl > it->first) continue;
-        int t = it->second;
         int max = 0;
-        int i;
-        for(i = index;i<t+index;i++)
+        for(int i = 0;i<n;i++)
         {
-            if(max < p[i].profit) max = p[i].profit;
+            //cout << p[i].dline << " " << k << " -- ";
+            if(p[i].dline>=k && tar[p[i].id]==0)
+            {
+                if(max < p[i].profit) max = p[i].profit;
+            }
         }
-        sum+=max;
-        dl += it->first;
-        index = i;
-        count++;
+        for(int i = 0;i<n;i++)
+        {
+            if(max==p[i].profit)
+            {
+                tar[p[i].id] = 1;
+                break;
+            }
+        }
+        //for(int i = 0;i<n;i++) cout << tar[i] << " ";
+        //cout << endl;
+        //cout << max << " ";
+        ar[k-1] = max;
+        k--;
+        j++;
     }
-    cout << count << " ";
-    return sum;
+    int sum = 0;
+    for(int i = 0;i<size;i++) sum+=ar[i];
+    cout << sum;
 }
 
 int main() {
@@ -57,7 +65,8 @@ int main() {
 	    {
 	        cin >> p[i].id >> p[i].dline >> p[i].profit;
 	    }
-	    cout << func(p,n) << endl;
+	    func(p,n);
+	    cout << endl;
 	}
 	return 0;
 }
