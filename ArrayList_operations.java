@@ -13,7 +13,7 @@ class Geeks
     {
      
         if(clist.contains(c))
-        System.out.println(collections.frequency(clist,c));
+        System.out.println(Collections.frequency(clist,c));
         else
         System.out.println("Not Present");
         
