@@ -12,7 +12,7 @@ void printDuplicates(int arr[], int n)
   
         // Check if current element is 
         // repeating or not. If it is 
-        // repeating then value will 
+        // repeating then value will
         // be greater than or equal to n. 
         if (arr[arr[i] % n] >= n) { 
   
